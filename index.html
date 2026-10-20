@@ -338,6 +338,35 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
 .edu-row h3 small { display: block; font-family: var(--body); font-size: 15px; font-weight: 500; color: var(--eosin); letter-spacing: 0; margin-top: 4px; }
 .edu-row p { color: var(--muted); font-size: 15.5px; }
 
+
+/* Music: side B */
+.music { margin-top: 96px; background: var(--gold); color: #1d1238; position: relative; overflow: hidden; }
+.music-inner { display: grid; gap: 48px; align-items: center; padding-block: 88px; }
+@media (min-width: 960px) { .music-inner { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 72px; padding-block: 120px; } }
+.music .kicker { color: #1d1238; }
+.music .h2 { color: #1d1238; }
+.music .h2 em { color: #b0175a; }
+.music-text { min-width: 0; }
+.music-text p { color: #3b2f52; max-width: 52ch; margin-bottom: 28px; }
+.music-text strong { color: #1d1238; }
+.spotify-btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 999px; background: #1d1238; color: #fff; font-weight: 600; border: 2px solid #1d1238; box-shadow: 4px 4px 0 #b0175a; transition: transform .15s, box-shadow .15s; }
+.spotify-btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 #b0175a; }
+.spotify-btn svg { width: 22px; height: 22px; flex: none; }
+.player { margin-top: 28px; border-radius: 16px; overflow: hidden; border: 2px solid #1d1238; box-shadow: 6px 6px 0 #1d1238; background: #1d1238; }
+.player iframe { display: block; width: 100%; height: 352px; border: 0; }
+.vinyl-wrap { position: relative; width: min(100%, 420px); aspect-ratio: 1; justify-self: center; max-width: 100%; }
+.sleeve { position: absolute; inset: 12% 36% 12% 0; border-radius: 10px; background: linear-gradient(135deg, #4b3bc4, #e4407b); border: 2px solid #1d1238; box-shadow: 6px 6px 0 #1d1238; display: flex; align-items: flex-end; padding: 18px; }
+.sleeve b { font-family: var(--display); font-weight: 800; font-size: clamp(1.6rem, 4vw, 2.4rem); letter-spacing: -0.04em; color: #fff; line-height: .9; }
+.vinyl { position: absolute; top: 12%; right: 0; width: 76%; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle, #e4407b 0 17%, #1d1238 17.5% 19%, transparent 19.5%), repeating-radial-gradient(circle, #141018 0 2px, #2a2433 3px 4px);
+  box-shadow: 0 20px 40px -18px rgba(29,18,56,.6); animation: spin 6s linear infinite; z-index: -0; }
+.vinyl::after { content: ""; position: absolute; inset: 48.5%; border-radius: 50%; background: var(--gold); }
+.vinyl-wrap .sleeve { z-index: 1; }
+.vinyl-label { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--mono); font-size: 10px; letter-spacing: .3em; color: #fff; }
+.vinyl-label span { transform: translateY(-34px); }
+#wave { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 90px; display: block; opacity: .22; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .vinyl { animation: none; } }
+
 /* Contact */
 .contact { padding-block: 120px 96px; }
 .contact-card {
@@ -385,6 +414,7 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
       <a href="#research">Research</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
+      <a href="#music">Music</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-tools">
@@ -785,6 +815,26 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
     </div>
   </section>
 
+  <section class="music" id="music">
+    <canvas id="wave" aria-hidden="true"></canvas>
+    <div class="wrap music-inner" style="position:relative">
+      <div class="music-text">
+        <p class="kicker mono">Side B · Music</p>
+        <h2 class="h2">Off the clock, I make music as <em>Sinopeta.</em></h2>
+        <p>Data and models are half of the story. The other half is music: I write and release my own music under the name <strong>Sinopeta</strong>. Put on your headphones and have a listen.</p>
+        <a class="spotify-btn" href="https://open.spotify.com/artist/5kAF6ioVm5HGknPUktON3W" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#1ed760"/><path d="M6.5 9.2c3.6-1.1 7.9-.8 11 1M7.2 12.3c3-.9 6.5-.6 9.1.9M7.9 15.2c2.4-.7 5-.5 7.1.7" fill="none" stroke="#1d1238" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span>Listen on Spotify</span>
+        </a>
+        <div class="player" id="player" hidden></div>
+      </div>
+      <div class="vinyl-wrap" aria-hidden="true">
+        <div class="vinyl"><div class="vinyl-label"><span>SINOPETA</span></div></div>
+        <div class="sleeve"><b>Sino<br>peta</b></div>
+      </div>
+    </div>
+  </section>
+
   <section class="wrap contact" id="contact">
     <div class="contact-card">
       <h2>Let's talk.</h2>
@@ -1014,6 +1064,11 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
     "Projects": "Progetti",
     "Skills": "Competenze",
     "Contact": "Contatti",
+    "Music": "Musica",
+    "Side B · Music": "Lato B · Musica",
+    "Off the clock, I make music as <em>Sinopeta.</em>": "Fuori dall'ufficio faccio musica come <em>Sinopeta.</em>",
+    "Data and models are half of the story. The other half is music: I write and release my own music under the name <strong>Sinopeta</strong>. Put on your headphones and have a listen.": "Dati e modelli sono metà della storia. L'altra metà è la musica: scrivo e pubblico la mia musica con il nome <strong>Sinopeta</strong>. Mettiti le cuffie e ascolta.",
+    "Listen on Spotify": "Ascolta su Spotify",
     "Education": "Formazione",
     "Ghent, Belgium · open to new roles": "Gand, Belgio · aperto a nuove opportunità",
     "Data &amp; AI Engineer. I build data platforms on Google Cloud and <mark>teach neural networks to read tissue.</mark>":
@@ -1160,7 +1215,7 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
   var lang = "en";
   var norm = function (h) { return h.replace(/\s+/g, " ").trim(); };
   var textEls = Array.prototype.map.call(document.querySelectorAll(
-    ".skip, .nav-links a, .hello span:not(.pulse), .role, .lead, .cta a span, .btn-line, .fov-tag b, .fov-tag span, .kicker, .h2, .prose p, .tile b, .tile span, .job-span, .job-where, .points li, .band-lead p, .who, .go, .step .n, .step h3, .step p, .chip, .art-label, .card h3, .card p, .links a, .more, .sk h3 span, .edu-row .when, .edu-row h3, .edu-row p, .contact-card h2, .contact-card p, .copy, .footer a"
+    ".skip, .nav-links a, .music-text p, .spotify-btn span, .hello span:not(.pulse), .role, .lead, .cta a span, .btn-line, .fov-tag b, .fov-tag span, .kicker, .h2, .prose p, .tile b, .tile span, .job-span, .job-where, .points li, .band-lead p, .who, .go, .step .n, .step h3, .step p, .chip, .art-label, .card h3, .card p, .links a, .more, .sk h3 span, .edu-row .when, .edu-row h3, .edu-row p, .contact-card h2, .contact-card p, .copy, .footer a"
   ), function (el) { return { el: el, en: el.innerHTML, key: norm(el.innerHTML) }; }).filter(function (t) { return IT[t.key]; });
 
   function setLang(next) {
@@ -1178,6 +1233,32 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
   var q = /[?&]lang=(en|it)\b/.exec(location.search);
   if (q) startLang = q[1];
   if (startLang !== "en") setLang(startLang);
+
+
+  // Spotify player: only where the page is the top window (the live site), since framed previews block it
+  if (window.self === window.top) {
+    var player = document.getElementById("player");
+    player.innerHTML = '<iframe title="Sinopeta on Spotify" src="https://open.spotify.com/embed/artist/5kAF6ioVm5HGknPUktON3W?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>';
+    player.hidden = false;
+  }
+
+  // Music band: a quiet waveform along the bottom edge
+  (function () {
+    var cv = document.getElementById("wave"), c = cv.getContext("2d"), t = 0, on = true;
+    function draw() {
+      var b = cv.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+      if (cv.width !== Math.round(b.width * dpr)) { cv.width = b.width * dpr; cv.height = b.height * dpr; }
+      c.setTransform(dpr, 0, 0, dpr, 0, 0); c.clearRect(0, 0, b.width, b.height); c.fillStyle = "#1d1238";
+      for (var x = 0, i = 0; x < b.width; x += 9, i++) {
+        var h = (Math.sin(i * .35 + t) * .5 + .5) * (Math.sin(i * .07 - t * .6) * .5 + .5) * b.height * .95 + 4;
+        c.fillRect(x, b.height - h, 5, h);
+      }
+    }
+    function loop() { t += .03; draw(); if (on) requestAnimationFrame(loop); }
+    if (reduce) { draw(); window.addEventListener("resize", draw); return; }
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { var was = on; on = es[0].isIntersecting; if (on && !was) loop(); }).observe(cv);
+    loop();
+  })();
 
   // Copy email
   var copyBtn = document.getElementById("copy-email");
