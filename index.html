@@ -367,6 +367,15 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
 #wave { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 90px; display: block; opacity: .22; pointer-events: none; }
 @media (prefers-reduced-motion: reduce) { .vinyl { animation: none; } }
 
+.riffs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: -6px 0 30px; max-width: 560px; }
+.riffs li { padding: 14px 14px 12px; border-radius: 16px; background: rgba(255,255,255,.45); border: 2px solid #1d1238; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.riffs b { font-family: var(--display); font-weight: 800; font-size: 2rem; line-height: 1; letter-spacing: -0.04em; color: #b0175a; }
+.riffs b::after { content: " yrs"; font-size: .9rem; letter-spacing: 0; color: #1d1238; }
+:root[lang="it"] .riffs b::after { content: " anni"; }
+.riffs span { font-weight: 600; font-size: 15px; line-height: 1.25; }
+.riffs small { font-size: 13px; color: #3b2f52; line-height: 1.3; }
+@media (max-width: 420px) { .riffs { grid-template-columns: 1fr; } .riffs li { flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; } .riffs small { flex-basis: 100%; } }
+
 /* Contact */
 .contact { padding-block: 120px 96px; }
 .contact-card {
@@ -803,6 +812,11 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
         <p>Machine and deep learning, natural language technologies, intelligent agents, complex networks, databases, and bioinformatics.</p>
       </div>
       <div class="edu-row">
+        <span class="when mono">Erasmus · Spain</span>
+        <h3>Erasmus exchange<small>University of Almería</small></h3>
+        <p>Studying abroad, I learned Spanish and passed exams in Big Data, Web Applications and Software Engineering.</p>
+      </div>
+      <div class="edu-row">
         <span class="when mono">2015 – 2018</span>
         <h3>B.Sc. Computer Science<small>University of Ferrara</small></h3>
         <p>Programming in C, C++, Java and JavaScript. Thesis: a web app for the Physics Department's research grants.</p>
@@ -821,7 +835,12 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
       <div class="music-text">
         <p class="kicker mono">Side B · Music</p>
         <h2 class="h2">Off the clock, I make music as <em>Sinopeta.</em></h2>
-        <p>Data and models are half of the story. The other half is music: I write and release my own music under the name <strong>Sinopeta</strong>. Put on your headphones and have a listen.</p>
+        <p>Data and models are half of the story. The other half is music. I picked up the electric guitar at ten, growing up on rock, metal and the great guitar soloists. Around eighteen I switched to acoustic guitar, and at twenty-two I became a singer-songwriter. Today I write and release my songs as <strong>Sinopeta</strong>.</p>
+        <ol class="riffs">
+          <li><b>10</b><span>Electric guitar</span><small>Rock, metal, guitar soloists</small></li>
+          <li><b>18</b><span>Acoustic guitar</span><small>From electric to acoustic</small></li>
+          <li><b>22</b><span>Singer-songwriter</span><small>Writing my own songs</small></li>
+        </ol>
         <a class="spotify-btn" href="https://open.spotify.com/artist/5kAF6ioVm5HGknPUktON3W" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#1ed760"/><path d="M6.5 9.2c3.6-1.1 7.9-.8 11 1M7.2 12.3c3-.9 6.5-.6 9.1.9M7.9 15.2c2.4-.7 5-.5 7.1.7" fill="none" stroke="#1d1238" stroke-width="1.8" stroke-linecap="round"/></svg>
           <span>Listen on Spotify</span>
@@ -1069,6 +1088,18 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
     "Off the clock, I make music as <em>Sinopeta.</em>": "Fuori dall'ufficio faccio musica come <em>Sinopeta.</em>",
     "Data and models are half of the story. The other half is music: I write and release my own music under the name <strong>Sinopeta</strong>. Put on your headphones and have a listen.": "Dati e modelli sono metà della storia. L'altra metà è la musica: scrivo e pubblico la mia musica con il nome <strong>Sinopeta</strong>. Mettiti le cuffie e ascolta.",
     "Listen on Spotify": "Ascolta su Spotify",
+    "Data and models are half of the story. The other half is music. I picked up the electric guitar at ten, growing up on rock, metal and the great guitar soloists. Around eighteen I switched to acoustic guitar, and at twenty-two I became a singer-songwriter. Today I write and release my songs as <strong>Sinopeta</strong>.":
+      "Dati e modelli sono metà della storia. L'altra metà è la musica. Ho iniziato con la chitarra elettrica a dieci anni, cresciuto a rock, metal e grandi chitarristi solisti. Verso i diciotto sono passato alla chitarra acustica e a ventidue sono diventato cantautore. Oggi scrivo e pubblico le mie canzoni come <strong>Sinopeta</strong>.",
+    "Electric guitar": "Chitarra elettrica",
+    "Rock, metal, guitar soloists": "Rock, metal, chitarristi solisti",
+    "Acoustic guitar": "Chitarra acustica",
+    "From electric to acoustic": "Dall'elettrica all'acustica",
+    "Singer-songwriter": "Cantautore",
+    "Writing my own songs": "Scrivo le mie canzoni",
+    "Erasmus · Spain": "Erasmus · Spagna",
+    "Erasmus exchange<small>University of Almería</small>": "Erasmus<small>Universidad de Almería</small>",
+    "Studying abroad, I learned Spanish and passed exams in Big Data, Web Applications and Software Engineering.":
+      "Studiando all'estero ho imparato lo spagnolo e superato gli esami di Big Data, Applicazioni Web e Ingegneria del Software.",
     "Education": "Formazione",
     "Ghent, Belgium · open to new roles": "Gand, Belgio · aperto a nuove opportunità",
     "Data &amp; AI Engineer. I build data platforms on Google Cloud and <mark>teach neural networks to read tissue.</mark>":
@@ -1215,7 +1246,7 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
   var lang = "en";
   var norm = function (h) { return h.replace(/\s+/g, " ").trim(); };
   var textEls = Array.prototype.map.call(document.querySelectorAll(
-    ".skip, .nav-links a, .music-text p, .spotify-btn span, .hello span:not(.pulse), .role, .lead, .cta a span, .btn-line, .fov-tag b, .fov-tag span, .kicker, .h2, .prose p, .tile b, .tile span, .job-span, .job-where, .points li, .band-lead p, .who, .go, .step .n, .step h3, .step p, .chip, .art-label, .card h3, .card p, .links a, .more, .sk h3 span, .edu-row .when, .edu-row h3, .edu-row p, .contact-card h2, .contact-card p, .copy, .footer a"
+    ".skip, .nav-links a, .music-text p, .spotify-btn span, .riffs span, .riffs small, .hello span:not(.pulse), .role, .lead, .cta a span, .btn-line, .fov-tag b, .fov-tag span, .kicker, .h2, .prose p, .tile b, .tile span, .job-span, .job-where, .points li, .band-lead p, .who, .go, .step .n, .step h3, .step p, .chip, .art-label, .card h3, .card p, .links a, .more, .sk h3 span, .edu-row .when, .edu-row h3, .edu-row p, .contact-card h2, .contact-card p, .copy, .footer a"
   ), function (el) { return { el: el, en: el.innerHTML, key: norm(el.innerHTML) }; }).filter(function (t) { return IT[t.key]; });
 
   function setLang(next) {
