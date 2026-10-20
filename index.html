@@ -120,6 +120,10 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
   :root:not([data-theme="light"]) .i-sun { display: none; }
   :root:not([data-theme="light"]) .i-moon { display: block; }
 }
+.lang { display: flex; align-items: center; padding: 3px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface); }
+.lang button { font: inherit; font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: .04em; padding: 7px 10px; border: 0; border-radius: 999px; background: transparent; color: var(--muted); cursor: pointer; }
+.lang button:hover { color: var(--ink); }
+.lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
 .menu-btn { display: none; }
 @media (max-width: 880px) {
   .menu-btn { display: grid; }
@@ -384,6 +388,10 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-tools">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="it" aria-pressed="false">IT</button>
+      </div>
       <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch light or dark theme">
         <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
         <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
@@ -400,7 +408,7 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
     <canvas id="tissue" aria-hidden="true"></canvas>
     <div class="wrap hero-grid">
       <div class="hero-text">
-        <p class="hello mono rise"><span class="pulse"></span>Ghent, Belgium · open to new roles</p>
+        <p class="hello mono rise"><span class="pulse"></span><span>Ghent, Belgium · open to new roles</span></p>
         <h1 class="name rise d1"><span>Alessandro</span><span class="stain">Caputo</span></h1>
         <p class="role rise d2">Data &amp; AI Engineer. I build data platforms on Google Cloud and <mark>teach neural networks to read tissue.</mark></p>
         <p class="lead rise d3">
@@ -409,7 +417,7 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
           for colorectal cancer. Next stop: AI for <strong>biology, medicine and healthcare</strong>.
         </p>
         <div class="cta rise d4">
-          <a class="btn btn-solid" href="#projects">See my work
+          <a class="btn btn-solid" href="#projects"><span>See my work</span>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a class="btn btn-line" href="#contact">Get in touch</a>
         </div>
@@ -740,17 +748,17 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
     <p class="kicker mono">Skills</p>
     <h2 class="h2">The <em>toolbox.</em></h2>
     <div class="skills">
-      <div class="sk"><h3><i style="background: var(--hema)"></i>Cloud &amp; data</h3>
+      <div class="sk"><h3><i style="background: var(--hema)"></i><span>Cloud &amp; data</span></h3>
         <ul class="tags"><li>GCP</li><li>BigQuery</li><li>Dataflow</li><li>Dataform</li><li>Pub/Sub</li><li>Cloud Run</li><li>Cloud Scheduler</li><li>Airflow</li><li>ETL / ELT</li><li>Medallion lakehouse</li><li>Star &amp; Snowflake</li><li>Azure</li><li>AWS</li></ul></div>
-      <div class="sk"><h3><i style="background: var(--eosin)"></i>AI &amp; ML</h3>
+      <div class="sk"><h3><i style="background: var(--eosin)"></i><span>AI &amp; ML</span></h3>
         <ul class="tags"><li>PyTorch</li><li>TensorFlow</li><li>Keras</li><li>scikit-learn</li><li>HuggingFace</li><li>LangChain</li><li>CNNs</li><li>Transformers</li><li>Computer vision</li><li>NLP</li><li>LLMs</li><li>MLOps</li></ul></div>
-      <div class="sk"><h3><i style="background: var(--gold)"></i>Integration &amp; automation</h3>
+      <div class="sk"><h3><i style="background: var(--gold)"></i><span>Integration &amp; automation</span></h3>
         <ul class="tags"><li>REST APIs</li><li>OAuth</li><li>Meta Graph API</li><li>Fivetran</li><li>n8n</li><li>AI agents</li><li>GA4</li><li>Google Ads</li></ul></div>
-      <div class="sk"><h3><i style="background: var(--teal)"></i>Languages &amp; databases</h3>
+      <div class="sk"><h3><i style="background: var(--teal)"></i><span>Languages &amp; databases</span></h3>
         <ul class="tags"><li>Python</li><li>SQL</li><li>JavaScript</li><li>Java</li><li>C / C++</li><li>Prolog</li><li>PostgreSQL</li><li>SQL Server</li><li>MongoDB</li><li>DynamoDB</li><li>Neo4j</li></ul></div>
-      <div class="sk"><h3><i style="background: var(--eosin)"></i>Bioinformatics</h3>
+      <div class="sk"><h3><i style="background: var(--eosin)"></i><span>Bioinformatics</span></h3>
         <ul class="tags"><li>Sequence alignment</li><li>Phylogenetics</li><li>NGS concepts</li><li>Gene networks</li><li>Biomedical imaging</li><li>Multimodal data</li><li>Complex networks</li></ul></div>
-      <div class="sk"><h3><i style="background: var(--hema)"></i>Ways of working</h3>
+      <div class="sk"><h3><i style="background: var(--hema)"></i><span>Ways of working</span></h3>
         <ul class="tags"><li>Git</li><li>Docker</li><li>CI/CD</li><li>Agile / Scrum</li><li>Looker Studio</li><li>Power BI</li><li>Tableau</li></ul></div>
     </div>
   </section>
@@ -997,15 +1005,189 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
     });
   });
 
+  // ---------- Language: English is the source text, Italian is looked up by it ----------
+  var IT = {
+    "Skip to content": "Vai al contenuto",
+    "About": "Chi sono",
+    "Experience": "Esperienza",
+    "Research": "Ricerca",
+    "Projects": "Progetti",
+    "Skills": "Competenze",
+    "Contact": "Contatti",
+    "Education": "Formazione",
+    "Ghent, Belgium · open to new roles": "Gand, Belgio · aperto a nuove opportunità",
+    "Data &amp; AI Engineer. I build data platforms on Google Cloud and <mark>teach neural networks to read tissue.</mark>":
+      "Data &amp; AI Engineer. Costruisco piattaforme dati su Google Cloud e <mark>insegno alle reti neurali a leggere i tessuti.</mark>",
+    "Two years of production pipelines for international clients at <strong>Multiminds</strong>, an <strong>M.Sc. in Artificial Intelligence</strong> from the University of Turin, and a thesis on deep learning for colorectal cancer. Next stop: AI for <strong>biology, medicine and healthcare</strong>.":
+      "Due anni di pipeline in produzione per clienti internazionali in <strong>Multiminds</strong>, una <strong>laurea magistrale in Intelligenza Artificiale</strong> all'Università di Torino e una tesi sul deep learning per il tumore del colon-retto. Prossima tappa: l'AI per <strong>biologia, medicina e sanità</strong>.",
+    "See my work": "Guarda i progetti",
+    "Get in touch": "Contattami",
+    "Specimen #1": "Campione n. 1",
+    "Italian, living in Ghent": "Italiano, vivo a Gand",
+
+    "From logic and language to <em>cells and pipelines.</em>": "Dalla logica e dal linguaggio <em>a cellule e pipeline.</em>",
+    "I studied Computer Science in Ferrara and Artificial Intelligence in Turin. Along the way I worked on Prolog, expert systems, NLP and neural networks, and slowly found myself drawn to <strong>biological and biomedical problems</strong>. An elective in bioinformatics (sequence alignment, NGS, phylogenetics, gene networks) showed me what computation can do for medicine, and my thesis at the <strong>EIDOSLAB</strong> research group put it into practice.":
+      "Ho studiato Informatica a Ferrara e Intelligenza Artificiale a Torino. Lungo la strada ho lavorato con Prolog, sistemi esperti, NLP e reti neurali, e piano piano mi sono avvicinato ai <strong>problemi biologici e biomedici</strong>. Un corso a scelta di bioinformatica (allineamento di sequenze, NGS, filogenesi, reti geniche) mi ha mostrato cosa può fare l'informatica per la medicina, e la tesi nel gruppo di ricerca <strong>EIDOSLAB</strong> l'ha messo in pratica.",
+    "Since 2024 I have been a Data Engineer at <strong>Multiminds</strong>, a Belgian consultancy. I design medallion lakehouses on GCP, batch and near real-time pipelines, and API connectors with secure token-based authentication. I also build AI automation workflows with n8n and LLM agents.":
+      "Dal 2024 sono Data Engineer in <strong>Multiminds</strong>, una società di consulenza belga. Progetto lakehouse a medaglione su GCP, pipeline batch e quasi in tempo reale e connettori API con autenticazione sicura basata su token. Creo anche workflow di automazione AI con n8n e agenti LLM.",
+    "I like international, interdisciplinary teams and hard problems. Long term, I want to work where <strong>AI meets bioinformatics</strong>.":
+      "Mi piacciono i team internazionali e interdisciplinari e i problemi difficili. Nel lungo periodo voglio lavorare dove <strong>l'AI incontra la bioinformatica</strong>.",
+    "2+ yrs": "2+ anni",
+    "building production data pipelines": "di pipeline dati in produzione",
+    "Artificial Intelligence, University of Turin": "Intelligenza Artificiale, Università di Torino",
+    "Associate Data Practitioner, certified": "Associate Data Practitioner, certificato",
+    "3 langs": "3 lingue",
+    "Italian native, English and Spanish C1": "italiano madrelingua, inglese e spagnolo C1",
+
+    "Where I've <em>worked.</em>": "Dove ho <em>lavorato.</em>",
+    "Oct 2024 – now": "ott 2024 – oggi",
+    "Oct 2024 – Oct 2025": "ott 2024 – ott 2025",
+    "2024 – now": "2024 – oggi",
+    "Oct 2022 – Jul 2023": "ott 2022 – lug 2023",
+    "via Multiminds · Brussels · European project": "tramite Multiminds · Bruxelles · progetto europeo",
+    "via Multiminds · Aalst · Flemish home-care organization": "tramite Multiminds · Aalst · organizzazione fiamminga di assistenza domiciliare",
+    "Aalst, Belgium": "Aalst, Belgio",
+    "Master's thesis internship · Turin, Italy": "Tirocinio di tesi magistrale · Torino",
+    "Bachelor's thesis internship · Ferrara, Italy": "Tirocinio di tesi triennale · Ferrara",
+    "Designed cloud-native data architectures on GCP with <strong>Star and Snowflake</strong> dimensional models for fast, consistent analytics.":
+      "Ho progettato architetture dati cloud-native su GCP con modelli dimensionali <strong>Star e Snowflake</strong> per analisi veloci e coerenti.",
+    "Built ETL/ELT pipelines on a <strong>bronze → silver → gold</strong> medallion lakehouse.":
+      "Ho costruito pipeline ETL/ELT su un lakehouse a medaglione <strong>bronze → silver → gold</strong>.",
+    "Orchestrated batch and near real-time flows with BigQuery, Dataflow, Pub/Sub, Dataform, Cloud Run and Cloud Scheduler.":
+      "Ho orchestrato flussi batch e quasi in tempo reale con BigQuery, Dataflow, Pub/Sub, Dataform, Cloud Run e Cloud Scheduler.",
+    "Wrote custom ingestion APIs for <strong>AWIN and Criteo</strong> with account management and token-based auth, and integrated Meta and other APIs in Python and SQL.":
+      "Ho scritto API di ingestion su misura per <strong>AWIN e Criteo</strong>, con gestione degli account e autenticazione a token, e integrato Meta e altre API in Python e SQL.",
+    "Client-facing role in an international Agile team.": "Ruolo a contatto con il cliente in un team Agile internazionale.",
+    "Built Python connectors from scratch on the <strong>Meta Graph API</strong> for Facebook, Instagram and Meta Ads data.":
+      "Ho sviluppato da zero connettori Python sulla <strong>Meta Graph API</strong> per i dati di Facebook, Instagram e Meta Ads.",
+    "Automated extraction, normalization and loading for marketing analytics and reporting.":
+      "Ho automatizzato estrazione, normalizzazione e caricamento per analisi e report di marketing.",
+    "Integrated LinkedIn Ads, TikTok Ads and Meta Ads through <strong>Fivetran</strong>.":
+      "Ho integrato LinkedIn Ads, TikTok Ads e Meta Ads tramite <strong>Fivetran</strong>.",
+    "Designed AI-driven automation workflows in <strong>n8n</strong>: multi-step, agent-based processes that combine LLMs and external APIs.":
+      "Ho progettato workflow di automazione basati sull'AI in <strong>n8n</strong>: processi a più passaggi, basati su agenti, che combinano LLM e API esterne.",
+    "Trained <strong>ResNet-18</strong> classifiers on colorectal cancer histopathology from Vercelli hospital.":
+      "Ho addestrato classificatori <strong>ResNet-18</strong> su immagini istopatologiche di tumore del colon-retto dell'ospedale di Vercelli.",
+    "Built preprocessing pipelines for gigapixel whole-slide images with OpenSlide and OpenCV.":
+      "Ho costruito pipeline di preprocessing per vetrini digitali da gigapixel con OpenSlide e OpenCV.",
+    "Correlated image features with patients' <strong>microRNA</strong> profiles using ML feature selection (FeatSee).":
+      "Ho correlato le feature delle immagini con i profili di <strong>microRNA</strong> dei pazienti tramite feature selection con ML (FeatSee).",
+    "Developed a web application for managing the Physics Department's research grants.":
+      "Ho sviluppato un'applicazione web per gestire gli assegni di ricerca del Dipartimento di Fisica.",
+
+    "Research · M.Sc. thesis · 2023": "Ricerca · Tesi magistrale · 2023",
+    "Deep learning on histopathological images for <em>cancer grading.</em>": "Deep learning su immagini istopatologiche per il <em>grading del tumore.</em>",
+    "Pathologists grade colorectal cancer by eye, from how differentiated the tissue looks on a slide. That judgement is subjective. We also know that abnormal <strong>microRNA expression</strong> drives how this cancer starts and grows.":
+      "I patologi classificano il tumore del colon-retto a occhio, in base a quanto il tessuto appare differenziato sul vetrino. È un giudizio soggettivo. Sappiamo anche che un'<strong>espressione anomala dei microRNA</strong> guida la nascita e la crescita di questo tumore.",
+    "I trained convolutional networks to compress gigapixel slides into compact descriptions of tumour tissue, then built a second, multimodal model to look for links between those image features and each patient's miRNA profile.":
+      "Ho addestrato reti convoluzionali per riassumere vetrini da gigapixel in descrizioni compatte del tessuto tumorale, poi ho costruito un secondo modello multimodale per cercare legami tra queste feature e il profilo di miRNA di ogni paziente.",
+    "Supervised by Prof. Francesca Cordero, Prof. Marco Grangetto and Dr. Carlo Alberto Barbano, EIDOSLAB, University of Turin.":
+      "Relatori: Prof.ssa Francesca Cordero, Prof. Marco Grangetto e Dott. Carlo Alberto Barbano, EIDOSLAB, Università di Torino.",
+    "Read the code on GitHub ↗": "Leggi il codice su GitHub ↗",
+    "Step 1": "Fase 1", "Step 2": "Fase 2", "Step 3": "Fase 3", "Step 4": "Fase 4",
+    "Tile the slide": "Dividere il vetrino",
+    "Whole-slide images cut into patches and filtered with OpenSlide and OpenCV.": "Vetrini digitali tagliati in patch e filtrati con OpenSlide e OpenCV.",
+    "CNN grading": "Grading con CNN",
+    "ResNet-18 in PyTorch, used as a classifier and as a feature extractor.": "ResNet-18 in PyTorch, usata come classificatore e come estrattore di feature.",
+    "Go multimodal": "Modello multimodale",
+    "Image features paired with each patient's microRNA expression profile.": "Feature delle immagini abbinate al profilo di espressione dei microRNA di ogni paziente.",
+    "Select features": "Selezione delle feature",
+    "FeatSee, built at the University of Turin, ranks the links between tissue and miRNA.": "FeatSee, sviluppato all'Università di Torino, ordina i legami tra tessuto e miRNA.",
+
+    "Things I've <em>built.</em>": "Cose che ho <em>costruito.</em>",
+    "All": "Tutti",
+    "Bio &amp; health": "Bio &amp; salute",
+    "Data &amp; cloud": "Dati &amp; cloud",
+    "Apps": "App",
+    "Thesis": "Tesi",
+    "Personal apps": "App personali",
+    "Complex networks": "Reti complesse",
+    "Symbolic AI": "AI simbolica",
+    "Histopathology classifier": "Classificatore istopatologico",
+    "CNNs that grade colorectal cancer from whole-slide images, plus a search for links between tissue features and microRNA.":
+      "CNN che classificano il tumore del colon-retto dai vetrini digitali, più una ricerca di legami tra feature del tessuto e microRNA.",
+    "Three offline-first web apps I made for my own life, each with a hand-drawn mascot. Patatino teaches Flemish Dutch, Paprikina teaches Hungarian with spaced-repetition flashcards and native-voice pronunciation, and Ghisa is a gym log with a rest timer and progress charts.":
+      "Tre web app offline-first che ho creato per la mia vita, ognuna con una mascotte disegnata a mano. Patatino insegna l'olandese delle Fiandre, Paprikina insegna l'ungherese con flashcard a ripetizione dilazionata e pronuncia con voce nativa, e Ghisa è un diario della palestra con timer di recupero e grafici dei progressi.",
+    "Yeast protein network": "Rete proteica del lievito",
+    "Analysis of a yeast protein–protein interaction graph: centralities, clustering, distance distributions, components and communities.":
+      "Analisi di un grafo di interazioni proteina–proteina del lievito: centralità, clustering, distribuzione delle distanze, componenti e comunità.",
+    "POS tagger for Latin &amp; Ancient Greek": "POS tagger per latino &amp; greco antico",
+    "A Viterbi tagger on a Hidden Markov Model, compared across smoothing techniques on the Perseus and UD Latin LLCT corpora.":
+      "Un tagger di Viterbi su un Hidden Markov Model, confrontato con diverse tecniche di smoothing sui corpora Perseus e UD Latin LLCT.",
+    "Lexical &amp; computational semantics": "Semantica lessicale &amp; computazionale",
+    "Lesk word sense disambiguation, WordNet similarity, NASARI summarization, FrameNet mapping, LDA topics and a knowledge graph from the Brown corpus.":
+      "Disambiguazione del senso delle parole con Lesk, similarità con WordNet, riassunti con NASARI, mapping su FrameNet, topic LDA e un knowledge graph dal Brown corpus.",
+    "SQL + NoSQL sentiment back-end": "Back-end SQL + NoSQL per sentiment",
+    "PostgreSQL and MongoDB side by side behind one DAO layer: 10,000 tweets preprocessed, queried and turned into word clouds.":
+      "PostgreSQL e MongoDB fianco a fianco dietro un unico livello DAO: 10.000 tweet preprocessati, interrogati e trasformati in word cloud.",
+    "Serverless on Azure &amp; AWS": "Serverless su Azure &amp; AWS",
+    "An Azure Function with an HTTP trigger serving Microsoft SQL data, and an AWS Lambda that counts its own calls in DynamoDB.":
+      "Una Azure Function con trigger HTTP che serve dati da Microsoft SQL, e una AWS Lambda che conta le proprie chiamate in DynamoDB.",
+    "React + Flask bookstore": "Libreria React + Flask",
+    "A small bookstore to browse, edit and delete books, with a React front end and a Flask API.":
+      "Una piccola libreria online per sfogliare, modificare ed eliminare libri, con front end React e API Flask.",
+    "Reasoning, planning &amp; uncertainty": "Ragionamento, pianificazione &amp; incertezza",
+    "An academic timetable solved with Answer Set Programming, Prolog and CLIPS systems, and MAP/MPE inference on Bayesian networks.":
+      "Un calendario accademico risolto con Answer Set Programming, sistemi in Prolog e CLIPS, e inferenza MAP/MPE su reti bayesiane.",
+    "Code": "Codice",
+    "Part 2": "Parte 2", "Part 3": "Parte 3",
+    "All repositories on GitHub ↗": "Tutti i repository su GitHub ↗",
+
+    "The <em>toolbox.</em>": "La <em>cassetta degli attrezzi.</em>",
+    "Cloud &amp; data": "Cloud &amp; dati",
+    "Integration &amp; automation": "Integrazione &amp; automazione",
+    "Languages &amp; databases": "Linguaggi &amp; database",
+    "Bioinformatics": "Bioinformatica",
+    "Ways of working": "Metodo di lavoro",
+
+    "Where I <em>learned.</em>": "Dove ho <em>studiato.</em>",
+    "Certification": "Certificazione",
+    "M.Sc. Artificial Intelligence<small>University of Turin</small>": "Laurea magistrale in Intelligenza Artificiale<small>Università di Torino</small>",
+    "Machine and deep learning, natural language technologies, intelligent agents, complex networks, databases, and bioinformatics.":
+      "Machine e deep learning, tecnologie del linguaggio naturale, agenti intelligenti, reti complesse, basi di dati e bioinformatica.",
+    "B.Sc. Computer Science<small>University of Ferrara</small>": "Laurea triennale in Informatica<small>Università di Ferrara</small>",
+    "Programming in C, C++, Java and JavaScript. Thesis: a web app for the Physics Department's research grants.":
+      "Programmazione in C, C++, Java e JavaScript. Tesi: una web app per gli assegni di ricerca del Dipartimento di Fisica.",
+    "Google's certification for working with data on Google Cloud.": "La certificazione di Google per lavorare con i dati su Google Cloud.",
+
+    "Let's talk.": "Parliamone.",
+    "I'm open to data engineering, ML/AI engineering and health-tech roles, and to PhD positions in bioinformatics or AI for health. Based in Ghent.":
+      "Sono aperto a ruoli in data engineering, ML/AI engineering e health-tech, e a posizioni di dottorato in bioinformatica o AI per la salute. Vivo a Gand.",
+    "Copy": "Copia",
+    "Back to top ↑": "Torna su ↑"
+  };
+  var UI = { en: { copied: "Copied", selected: "Selected", copy: "Copy" }, it: { copied: "Copiato", selected: "Selezionato", copy: "Copia" } };
+  var lang = "en";
+  var norm = function (h) { return h.replace(/\s+/g, " ").trim(); };
+  var textEls = Array.prototype.map.call(document.querySelectorAll(
+    ".skip, .nav-links a, .hello span:not(.pulse), .role, .lead, .cta a span, .btn-line, .fov-tag b, .fov-tag span, .kicker, .h2, .prose p, .tile b, .tile span, .job-span, .job-where, .points li, .band-lead p, .who, .go, .step .n, .step h3, .step p, .chip, .art-label, .card h3, .card p, .links a, .more, .sk h3 span, .edu-row .when, .edu-row h3, .edu-row p, .contact-card h2, .contact-card p, .copy, .footer a"
+  ), function (el) { return { el: el, en: el.innerHTML, key: norm(el.innerHTML) }; }).filter(function (t) { return IT[t.key]; });
+
+  function setLang(next) {
+    lang = next === "it" ? "it" : "en";
+    textEls.forEach(function (t) { t.el.innerHTML = lang === "it" ? IT[t.key] : t.en; });
+    root.setAttribute("lang", lang);
+    document.querySelectorAll(".lang button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.lang === lang)); });
+    try { localStorage.setItem("lang", lang); } catch (e) {}
+  }
+  document.querySelectorAll(".lang button").forEach(function (b) {
+    b.addEventListener("click", function () { setLang(b.dataset.lang); });
+  });
+  var startLang = "en";
+  try { startLang = localStorage.getItem("lang") || "en"; } catch (e) {}
+  var q = /[?&]lang=(en|it)\b/.exec(location.search);
+  if (q) startLang = q[1];
+  if (startLang !== "en") setLang(startLang);
+
   // Copy email
   var copyBtn = document.getElementById("copy-email");
   copyBtn.addEventListener("click", function () {
     var text = document.getElementById("email").textContent;
-    function selectIt() { var s = window.getSelection(), rg = document.createRange(); rg.selectNodeContents(document.getElementById("email")); s.removeAllRanges(); s.addRange(rg); copyBtn.textContent = "Selected"; }
+    function selectIt() { var s = window.getSelection(), rg = document.createRange(); rg.selectNodeContents(document.getElementById("email")); s.removeAllRanges(); s.addRange(rg); copyBtn.textContent = UI[lang].selected; }
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(function () { copyBtn.textContent = "Copied"; }, selectIt);
+      navigator.clipboard.writeText(text).then(function () { copyBtn.textContent = UI[lang].copied; }, selectIt);
     } else selectIt();
-    setTimeout(function () { copyBtn.textContent = "Copy"; }, 2000);
+    setTimeout(function () { copyBtn.textContent = UI[lang].copy; }, 2000);
   });
 
   document.getElementById("year").textContent = new Date().getFullYear();
