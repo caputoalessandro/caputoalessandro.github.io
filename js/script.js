@@ -1,67 +1,90 @@
-const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu");
+const root = document.documentElement;
 
-hamburger.addEventListener("click", mobileMenu);
+// Theme toggle: follows the system until the visitor picks one
+const themeToggle = document.getElementById("theme-toggle");
+const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
 
-function mobileMenu() {
-  hamburger.classList.toggle("active");
-  navMenu.classList.toggle("active");
+function currentTheme() {
+  return root.getAttribute("data-theme") || (systemDark.matches ? "dark" : "light");
 }
 
-// Close navbar when link is clicked
-const navLink = document.querySelectorAll(".nav-link");
+themeToggle.addEventListener("click", () => {
+  const next = currentTheme() === "dark" ? "light" : "dark";
+  root.setAttribute("data-theme", next);
+  try {
+    localStorage.setItem("theme", next);
+  } catch (e) {}
+});
 
-navLink.forEach((n) => n.addEventListener("click", closeMenu));
+// Mobile menu
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
 
-function closeMenu() {
-  hamburger.classList.remove("active");
-  navMenu.classList.remove("active");
+function setMenu(open) {
+  navLinks.classList.toggle("is-open", open);
+  menuToggle.setAttribute("aria-expanded", String(open));
 }
 
-// Event Listeners: Handling toggle event
-const toggleSwitch = document.querySelector(
-  '.theme-switch input[type="checkbox"]'
+menuToggle.addEventListener("click", () => setMenu(!navLinks.classList.contains("is-open")));
+navLinks.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+
+// Nav border once the page scrolls
+const nav = document.querySelector(".nav");
+const onScroll = () => nav.classList.toggle("is-scrolled", window.scrollY > 8);
+window.addEventListener("scroll", onScroll, { passive: true });
+onScroll();
+
+// Highlight the section currently in view
+const sections = document.querySelectorAll("main section[id]");
+const linkFor = (id) => navLinks.querySelector(`a[href="#${id}"]`);
+
+if ("IntersectionObserver" in window) {
+  const spy = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.querySelectorAll("a").forEach((a) => a.classList.remove("is-current"));
+        const link = linkFor(entry.target.id);
+        if (link) link.classList.add("is-current");
+      });
+    },
+    { rootMargin: "-45% 0px -50% 0px" }
+  );
+  sections.forEach((s) => spy.observe(s));
+
+  // Fade sections in as they enter the viewport
+  const reveal = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        reveal.unobserve(entry.target);
+      });
+    },
+    { rootMargin: "0px 0px -8% 0px" }
+  );
+  document.querySelectorAll(".section-head, .tl-item, .research, .card, .skill-group, .edu-item, .contact-box").forEach((el) => {
+    el.classList.add("reveal");
+    reveal.observe(el);
+  });
+}
+
+// Project filters
+const chips = document.querySelectorAll(".chip");
+const cards = document.querySelectorAll(".projects .card");
+
+chips.forEach((chip) =>
+  chip.addEventListener("click", () => {
+    const filter = chip.dataset.filter;
+    chips.forEach((c) => {
+      const active = c === chip;
+      c.classList.toggle("is-active", active);
+      c.setAttribute("aria-pressed", String(active));
+    });
+    cards.forEach((card) => {
+      card.hidden = filter !== "all" && !card.dataset.cat.split(" ").includes(filter);
+    });
+  })
 );
 
-function switchTheme(e) {
-  if (e.target.checked) {
-    document.documentElement.setAttribute("data-theme", "dark");
-  } else {
-    document.documentElement.setAttribute("data-theme", "light");
-  }
-}
-
-toggleSwitch.addEventListener("change", switchTheme, false);
-
-//  Store color theme for future visits
-
-function switchTheme(e) {
-  if (e.target.checked) {
-    document.documentElement.setAttribute("data-theme", "dark");
-    localStorage.setItem("theme", "dark"); //add this
-  } else {
-    document.documentElement.setAttribute("data-theme", "light");
-    localStorage.setItem("theme", "light"); //add this
-  }
-}
-
-// Save user preference on load
-
-const currentTheme = localStorage.getItem("theme")
-  ? localStorage.getItem("theme")
-  : null;
-
-if (currentTheme) {
-  document.documentElement.setAttribute("data-theme", currentTheme);
-
-  if (currentTheme === "dark") {
-    toggleSwitch.checked = true;
-  }
-}
-
-//Adding date
-
-let myDate = document.querySelector("#datee");
-
-const yes = new Date().getFullYear();
-myDate.innerHTML = yes;
+document.getElementById("year").textContent = new Date().getFullYear();
