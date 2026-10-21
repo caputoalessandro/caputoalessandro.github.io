@@ -410,13 +410,52 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
   .marquee-track, .fov-ring, .hello .pulse { animation: none; }
   .card, .card:hover { transform: none; }
 }
+
+/* Calmer finish: softer edges and shadows, straight lines, smaller display sizes */
+.name { font-size: clamp(3rem, 9.5vw, 7.4rem); letter-spacing: -0.045em; }
+.role { font-weight: 500; }
+.h2 { font-size: clamp(2rem, 4.6vw, 3.4rem); letter-spacing: -0.035em; }
+.btn { border-width: 1.5px; }
+.btn-solid, .btn-solid:hover { box-shadow: none; transform: none; }
+.btn-solid:hover { background: var(--hema); border-color: var(--hema); color: #fff; }
+.btn-line:hover { background: var(--line); color: var(--ink); border-color: var(--ink); }
+.marquee { transform: none; margin: 0; border-block: 0; background: var(--ink); color: var(--bg); }
+.marquee-clip { padding-block: 0; }
+.marquee-track { animation-duration: 70s; padding-block: 16px; }
+.marquee-track span { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; letter-spacing: 0; }
+.marquee-track span::after { content: "·"; color: var(--eosin); }
+.fov-ring { animation: none; }
+.fov-ring text { display: none; }
+.fov-photo { box-shadow: 0 0 0 6px var(--surface), 0 0 0 7.5px var(--line), 0 30px 60px -24px color-mix(in srgb, var(--hema) 45%, transparent); }
+.fov-blob { opacity: .85; }
+.t2, .t4 { transform: none; }
+.tile { min-height: 132px; border-radius: 18px; }
+.card { border: 1.5px solid var(--line); box-shadow: 0 1px 2px rgba(29,18,56,.05), 0 10px 30px -12px rgba(29,18,56,.18); border-radius: 20px; }
+.card:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(29,18,56,.06), 0 18px 40px -14px rgba(29,18,56,.28); }
+.art { border-bottom: 1.5px solid var(--line); }
+.art-label { border-width: 1px; border-color: var(--line); }
+.mascots img { border-width: 1.5px; }
+.mascots img:nth-child(1), .mascots img:nth-child(3) { transform: none; }
+.chip { border-width: 1.5px; border-color: var(--line); }
+.chip[aria-pressed="true"] { border-color: var(--ink); }
+.job-year { font-size: 2.6rem; -webkit-text-stroke: 1.2px var(--muted); }
+.jobs, .edu { border-top-width: 1.5px; }
+.spotify-btn, .spotify-btn:hover { box-shadow: none; transform: none; border-width: 1.5px; }
+.spotify-btn:hover { background: #2a1f55; }
+.player { border-width: 1.5px; box-shadow: 0 18px 40px -18px rgba(29,18,56,.45); }
+.sleeve { border-width: 1.5px; box-shadow: 0 18px 40px -18px rgba(29,18,56,.45); }
+.riffs li { border-width: 1.5px; border-color: rgba(29,18,56,.35); }
+.contact-card { border: 0; box-shadow: 0 30px 70px -30px color-mix(in srgb, var(--hema) 60%, transparent); border-radius: 28px; }
+.contact-card h2 { font-size: clamp(2.4rem, 7vw, 4.6rem); letter-spacing: -0.045em; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .card { box-shadow: none; } }
+:root[data-theme="dark"] .card { box-shadow: none; }
 </style>
 
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="nav" id="top">
   <div class="wrap nav-inner">
-    <a class="brand" href="#top" aria-label="Alessandro Caputo, back to top"><span class="brand-dots"></span>caputo</a>
+    <a class="brand" href="#top" aria-label="Alessandro Caputo, back to top"><span class="brand-dots"></span>Alessandro Caputo</a>
     <nav class="nav-links" id="nav-links" aria-label="Main">
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
@@ -449,14 +488,14 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
       <div class="hero-text">
         <p class="hello mono rise"><span class="pulse"></span><span>Ghent, Belgium · open to new roles</span></p>
         <h1 class="name rise d1"><span>Alessandro</span><span class="stain">Caputo</span></h1>
-        <p class="role rise d2">Data &amp; AI Engineer. I build data platforms on Google Cloud and <mark>teach neural networks to read tissue.</mark></p>
+        <p class="role rise d2">Data &amp; AI Engineer. I build data platforms on Google Cloud and <mark>apply deep learning to medical imaging.</mark></p>
         <p class="lead rise d3">
           Two years of production pipelines for international clients at <strong>Multiminds</strong>, an
           <strong>M.Sc. in Artificial Intelligence</strong> from the University of Turin, and a thesis on deep learning
           for colorectal cancer. Next stop: AI for <strong>biology, medicine and healthcare</strong>.
         </p>
         <div class="cta rise d4">
-          <a class="btn btn-solid" href="#projects"><span>See my work</span>
+          <a class="btn btn-solid" href="#projects"><span>View projects</span>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a class="btn btn-line" href="#contact">Get in touch</a>
         </div>
@@ -515,7 +554,7 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
 
   <section class="section wrap" id="experience">
     <p class="kicker mono">Experience</p>
-    <h2 class="h2">Where I've <em>worked.</em></h2>
+    <h2 class="h2">Professional <em>experience.</em></h2>
     <ol class="jobs">
       <li class="job">
         <div class="job-when"><span class="job-year">2024</span><span class="job-span mono">Oct 2024 – now</span></div>
@@ -668,7 +707,7 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
 
   <section class="section wrap" id="projects">
     <p class="kicker mono">Projects</p>
-    <h2 class="h2">Things I've <em>built.</em></h2>
+    <h2 class="h2">Selected <em>projects.</em></h2>
     <div class="filters" role="group" aria-label="Filter projects">
       <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
       <button class="chip" type="button" data-filter="ai" aria-pressed="false">AI &amp; ML</button>
@@ -784,7 +823,7 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
 
   <section class="section wrap" id="skills">
     <p class="kicker mono">Skills</p>
-    <h2 class="h2">The <em>toolbox.</em></h2>
+    <h2 class="h2">Skills <em>&amp; tools.</em></h2>
     <div class="skills">
       <div class="sk"><h3><i style="background: var(--hema)"></i><span>Cloud &amp; data</span></h3>
         <ul class="tags"><li>GCP</li><li>BigQuery</li><li>Dataflow</li><li>Dataform</li><li>Pub/Sub</li><li>Cloud Run</li><li>Cloud Scheduler</li><li>Airflow</li><li>ETL / ELT</li><li>Medallion lakehouse</li><li>Star &amp; Snowflake</li><li>Azure</li><li>AWS</li></ul></div>
@@ -803,7 +842,7 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
 
   <section class="section wrap" id="education">
     <p class="kicker mono">Education</p>
-    <h2 class="h2">Where I <em>learned.</em></h2>
+    <h2 class="h2">Education <em>&amp; certification.</em></h2>
     <div class="edu">
       <div class="edu-row">
         <span class="when mono">2018 – 2023</span>
@@ -832,8 +871,8 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
     <canvas id="wave" aria-hidden="true"></canvas>
     <div class="wrap music-inner" style="position:relative">
       <div class="music-text">
-        <p class="kicker mono">Side B · Music</p>
-        <h2 class="h2">Off the clock, I make music as <em>Sinopeta.</em></h2>
+        <p class="kicker mono">Music</p>
+        <h2 class="h2">Beyond engineering: music as <em>Sinopeta.</em></h2>
         <p>Data and models are half of the story. The other half is music. I picked up the electric guitar at ten, growing up on rock, metal and the great guitar soloists. Around eighteen I switched to acoustic guitar, and at twenty-two I became a singer-songwriter. Today I write and release my songs as <strong>Sinopeta</strong>.</p>
         <ol class="riffs">
           <li><b>10</b><span>Electric guitar</span><small>Rock, metal, guitar soloists</small></li>
@@ -855,7 +894,7 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
 
   <section class="wrap contact" id="contact">
     <div class="contact-card">
-      <h2>Let's talk.</h2>
+      <h2>Get in touch.</h2>
       <p>I'm open to data engineering, ML/AI engineering and health-tech roles, and to PhD positions in bioinformatics or AI for health. Based in Ghent.</p>
       <div class="mail">
         <code id="email">caputoalessandro.cs@gmail.com</code>
@@ -1083,8 +1122,7 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
     "Skills": "Competenze",
     "Contact": "Contatti",
     "Music": "Musica",
-    "Side B · Music": "Lato B · Musica",
-    "Off the clock, I make music as <em>Sinopeta.</em>": "Fuori dall'ufficio faccio musica come <em>Sinopeta.</em>",
+    "Beyond engineering: music as <em>Sinopeta.</em>": "Oltre l'ingegneria: la musica come <em>Sinopeta.</em>",
     "Data and models are half of the story. The other half is music: I write and release my own music under the name <strong>Sinopeta</strong>. Put on your headphones and have a listen.": "Dati e modelli sono metà della storia. L'altra metà è la musica: scrivo e pubblico la mia musica con il nome <strong>Sinopeta</strong>. Mettiti le cuffie e ascolta.",
     "Listen on Spotify": "Ascolta su Spotify",
     "Data and models are half of the story. The other half is music. I picked up the electric guitar at ten, growing up on rock, metal and the great guitar soloists. Around eighteen I switched to acoustic guitar, and at twenty-two I became a singer-songwriter. Today I write and release my songs as <strong>Sinopeta</strong>.":
@@ -1101,11 +1139,11 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
       "Studiando all'estero ho imparato lo spagnolo e superato gli esami di Big Data, Applicazioni Web e Ingegneria del Software.",
     "Education": "Formazione",
     "Ghent, Belgium · open to new roles": "Gand, Belgio · aperto a nuove opportunità",
-    "Data &amp; AI Engineer. I build data platforms on Google Cloud and <mark>teach neural networks to read tissue.</mark>":
-      "Data &amp; AI Engineer. Costruisco piattaforme dati su Google Cloud e <mark>insegno alle reti neurali a leggere i tessuti.</mark>",
+    "Data &amp; AI Engineer. I build data platforms on Google Cloud and <mark>apply deep learning to medical imaging.</mark>":
+      "Data &amp; AI Engineer. Costruisco piattaforme dati su Google Cloud e <mark>applico il deep learning all'imaging medico.</mark>",
     "Two years of production pipelines for international clients at <strong>Multiminds</strong>, an <strong>M.Sc. in Artificial Intelligence</strong> from the University of Turin, and a thesis on deep learning for colorectal cancer. Next stop: AI for <strong>biology, medicine and healthcare</strong>.":
       "Due anni di pipeline in produzione per clienti internazionali in <strong>Multiminds</strong>, una <strong>laurea magistrale in Intelligenza Artificiale</strong> all'Università di Torino e una tesi sul deep learning per il tumore del colon-retto. Prossima tappa: l'AI per <strong>biologia, medicina e sanità</strong>.",
-    "See my work": "Guarda i progetti",
+    "View projects": "Vedi i progetti",
     "Get in touch": "Contattami",
     "Specimen #1": "Campione n. 1",
     "Italian, living in Ghent": "Italiano, vivo a Gand",
@@ -1124,7 +1162,7 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
     "3 langs": "3 lingue",
     "Italian native, English and Spanish C1": "italiano madrelingua, inglese e spagnolo C1",
 
-    "Where I've <em>worked.</em>": "Dove ho <em>lavorato.</em>",
+    "Professional <em>experience.</em>": "Esperienza <em>professionale.</em>",
     "Oct 2024 – now": "ott 2024 – oggi",
     "Oct 2024 – Oct 2025": "ott 2024 – ott 2025",
     "2024 – now": "2024 – oggi",
@@ -1179,7 +1217,7 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
     "Select features": "Selezione delle feature",
     "FeatSee, built at the University of Turin, ranks the links between tissue and miRNA.": "FeatSee, sviluppato all'Università di Torino, ordina i legami tra tessuto e miRNA.",
 
-    "Things I've <em>built.</em>": "Cose che ho <em>costruito.</em>",
+    "Selected <em>projects.</em>": "Progetti <em>selezionati.</em>",
     "All": "Tutti",
     "Bio &amp; health": "Bio &amp; salute",
     "Data &amp; cloud": "Dati &amp; cloud",
@@ -1218,14 +1256,14 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
     "Part 2": "Parte 2", "Part 3": "Parte 3",
     "All repositories on GitHub ↗": "Tutti i repository su GitHub ↗",
 
-    "The <em>toolbox.</em>": "La <em>cassetta degli attrezzi.</em>",
+    "Skills <em>&amp; tools.</em>": "Competenze <em>&amp; strumenti.</em>",
     "Cloud &amp; data": "Cloud &amp; dati",
     "Integration &amp; automation": "Integrazione &amp; automazione",
     "Languages &amp; databases": "Linguaggi &amp; database",
     "Bioinformatics": "Bioinformatica",
     "Ways of working": "Metodo di lavoro",
 
-    "Where I <em>learned.</em>": "Dove ho <em>studiato.</em>",
+    "Education <em>&amp; certification.</em>": "Formazione <em>&amp; certificazioni.</em>",
     "Certification": "Certificazione",
     "M.Sc. Artificial Intelligence<small>University of Turin</small>": "Laurea magistrale in Intelligenza Artificiale<small>Università di Torino</small>",
     "Machine and deep learning, natural language technologies, intelligent agents, complex networks, databases, and bioinformatics.":
@@ -1235,7 +1273,7 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
       "Programmazione in C, C++, Java e JavaScript. Tesi: una web app per gli assegni di ricerca del Dipartimento di Fisica.",
     "Google's certification for working with data on Google Cloud.": "La certificazione di Google per lavorare con i dati su Google Cloud.",
 
-    "Let's talk.": "Parliamone.",
+    "Get in touch.": "Contatti.",
     "I'm open to data engineering, ML/AI engineering and health-tech roles, and to PhD positions in bioinformatics or AI for health. Based in Ghent.":
       "Sono aperto a ruoli in data engineering, ML/AI engineering e health-tech, e a posizioni di dottorato in bioinformatica o AI per la salute. Vivo a Gand.",
     "Copy": "Copia",
